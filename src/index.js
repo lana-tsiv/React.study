@@ -1,7 +1,8 @@
 import React from "react";
-import reactDom from "react-dom";
+import ReactDOM from "react-dom/client";
 import "bootstrap/dist/css/bootstrap.css";
 
+const root = ReactDOM.createRoot(document.getElementById("root"));
 const element = <h1>Hello world</h1>;
 
-reactDom.render(element, document.getElementById("root"));
+root.render(element);
