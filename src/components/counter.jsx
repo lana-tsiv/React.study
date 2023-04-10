@@ -15,12 +15,14 @@ const Counter = (props) => {
   };
 
   const handleIncrement = () => {
-    console.log("handle Increment");
+    // console.log("handle Increment");
     // setValue((prevState) => prevState + 1);
+    props.onIncrement(props.id);
   };
 
   const handleDecrement = () => {
-    console.log("handle Decrement");
+    props.onDecrement(props.id);
+    // console.log("handle Decrement");
     // setValue((prevState) => prevState - 1);
   };
 

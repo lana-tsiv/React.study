@@ -22,27 +22,47 @@ const CountersList = () => {
     console.log("handle reset");
   };
 
-  const handleUpdate = () => {
-    const updatedlState = [
-      { id: 0, value: 1, name: "Ненужная вещь", price: "200" },
-      { id: 1, value: 2, name: "Ложка" },
-      { id: 2, value: 3, name: "Вилка" },
-      { id: 3, value: 4, name: "Тарелка" },
-      { id: 4, value: 0, name: "Набор минималиста" },
-    ];
-    setCounters(updatedlState);
+  const handleIncrement = (id) => {
+    const elementIndex = counters.findIndex((c) => c.id === id);
+    const newCounters = [...counters];
+    newCounters[elementIndex].value++;
+    setCounters(newCounters);
   };
+
+  const handleDecrement = (id) => {
+    const elementIndex = counters.findIndex((c) => c.id === id);
+    const newCounters = [...counters];
+    newCounters[elementIndex].value--;
+    setCounters(newCounters);
+  };
+
+  // const handleUpdate = () => {
+  //   const updatedlState = [
+  //     { id: 0, value: 1, name: "Ненужная вещь", price: "200" },
+  //     { id: 1, value: 2, name: "Ложка" },
+  //     { id: 2, value: 3, name: "Вилка" },
+  //     { id: 3, value: 4, name: "Тарелка" },
+  //     { id: 4, value: 0, name: "Набор минималиста" },
+  //   ];
+  //   setCounters(updatedlState);
+  // };
   return (
     <>
       {counters.map((count) => (
-        <Counter key={count.id} onDelete={handleDelete} {...count} />
+        <Counter
+          key={count.id}
+          onDelete={handleDelete}
+          onIncrement={handleIncrement}
+          onDecrement={handleDecrement}
+          {...count}
+        />
       ))}
       <button className="btn btn-primary btn-sm m-2" onClick={handleReset}>
         Сброс
       </button>
-      <button className="btn btn-primary btn-sm m-2" onClick={handleUpdate}>
+      {/* <button className="btn btn-primary btn-sm m-2" onClick={handleUpdate}>
         Обновить состояние
-      </button>
+      </button> */}
     </>
   );
 };
